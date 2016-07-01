@@ -1,0 +1,24 @@
+# Install CMSSW and CMGTools
+export SCRAM_ARCH=slc6_amd64_gcc493
+cmsrel CMSSW_7_6_3_patch2 
+cd CMSSW_7_6_3_patch2/src 
+cmsenv
+git cms-init
+git remote add cmg-central https://github.com/CERN-PH-CMG/cmg-cmssw.git  -f  -t heppy_76X
+cp /afs/cern.ch/user/c/cmgtools/public/sparse-checkout_76X_heppy .git/info/sparse-checkout
+git checkout -b heppy_76X cmg-central/heppy_76X
+git clone -o cmg-central https://github.com/CERN-PH-CMG/cmgtools-lite.git -b 76X  CMGTools
+scram b -j 4
+# Install Python libraries
+cd ../../
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py --user
+rm get-pip.py
+pip2.7 install --user virtualenv
+virtualenv env
+source activate
+pip install --upgrade scipy
+pip install numpy
+pip install sklearn
+pip install root_numpy
+pip install rootpy
