@@ -1,4 +1,5 @@
 import numpy as np
+import pickle
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn import cross_validation
 
@@ -7,8 +8,12 @@ from rootpy.io import root_open
 from root_numpy import root2array
 
 
-
 def fit(filename1, treename1, filename2, treename2, inputsname):
+    sample_info = pickle.load(open('/afs/cern.ch/user/j/jsauvan/public/Htautau/mc_info_76.pck', 'rb'))
+    # sample weight = 1/(sample luminosity)
+    weight_w = sample_info['W']['XSec']/sample_info['W']['SumWeights'] 
+    weight_qcd = sample_info['QCD']['XSec']/sample_info['QCD']['SumWeights']
+    print weight_w, weight_qcd
     # Reading inputs from ROOT tree
     data1 = root2array(filename1, treename=treename1, branches=inputsname)
     data2 = root2array(filename2, treename=treename2, branches=inputsname)

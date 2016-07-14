@@ -8,6 +8,10 @@ git remote add cmg-central https://github.com/CERN-PH-CMG/cmg-cmssw.git  -f  -t 
 cp /afs/cern.ch/user/c/cmgtools/public/sparse-checkout_76X_heppy .git/info/sparse-checkout
 git checkout -b heppy_76X cmg-central/heppy_76X
 git clone -o cmg-central https://github.com/CERN-PH-CMG/cmgtools-lite.git -b 76X  CMGTools
+# Install fake factor tool
+git clone -o cms-htt https://github.com/CMS-HTT/Jet2TauFakes.git  -b v0.1.3 HTTutilities/Jet2TauFakes
+mkdir HTTutilities/Jet2TauFakes/data
+cp -p /afs/cern.ch/user/m/mflechl/public/Htautau/FakeRate/20160511/fakeFactors_20160511.root HTTutilities/Jet2TauFakes/data/
 scram b -j 4
 # Install Python libraries
 cd ../../
