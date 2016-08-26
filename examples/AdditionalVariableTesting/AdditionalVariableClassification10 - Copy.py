@@ -21,7 +21,7 @@ file_tt_data  = '/afs/cern.ch/work/s/steggema/public/mt/070416/TauMuSVFitMC/TT_p
 
 InputVariables = ['mt','l2_decayMode','mvis','n_bjets','n_jets','l1_reliso05', 'delta_phi_l1_l2', 'delta_eta_l1_l2', 'delta_phi_l1_met', 'delta_phi_l2_met']
 path = AVC.PathGenerator(InputVariables)
-#f = AVC.MultiClass_fit(filenames=[file_w,file_qcd_data,file_Z_data,file_tt_data],treenames=['tree','tree','tree','tree'],inputsname=InputVariables, path = path)    
-AVC.MultiClass_fit(filenames=[file_w,file_qcd_data,file_Z_data,file_tt_data],treenames=['tree','tree','tree','tree'],inputsname=InputVariables, path = path, QCD_MC=True, training =False, Cls_quality=True)    
 
-#AVC.Eventdist(path,InputVariables)
+#Eventdist(path, InputVariables)
+
+AVC.VarImportance()

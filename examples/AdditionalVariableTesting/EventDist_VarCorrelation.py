@@ -23,10 +23,10 @@ InputVariables = ['mt','l2_decayMode','mvis','n_bjets','n_jets','l1_reliso05', '
 
 path = AVC.PathGenerator(InputVariables)
 
-#Eventdist(path, InputVariables)
+AVC.Eventdist(path, InputVariables)
 #AVC.VarImportance()
 
 #AVC.Variable_Correlation(path)
 
-AVC.ColorPlotConfMatrix()
+#AVC.ColorPlotConfMatrix()
 #AVC.ConfMatrixAnalsis()
